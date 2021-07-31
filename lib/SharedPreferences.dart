@@ -40,7 +40,7 @@ class SharedPreferences {
   ///
   /// It is NOT guaranteed that this cache and the device prefs will remain
   /// in sync since the setter method might fail for any reason.
-  final _preferenceCache = <String, Object> {};
+  final _preferenceCache = <String, Object?> {};
 
 
 
@@ -140,7 +140,7 @@ class SharedPreferences {
   /// Use this method to observe modifications that were made in native code
   /// (without using the plugin) while the app is running.
   Future<void> reload() async {
-    final Map<String, Object> preferences = await (_store.getAll(filename) as Future<Map<String, Object>>);
+    final Map<String, Object?> preferences = await (_store.getAll(filename) as Future<Map<String, Object?>>);
     _preferenceCache.clear();
     _preferenceCache.addAll(preferences);
   }
